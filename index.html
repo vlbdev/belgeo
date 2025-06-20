@@ -55,6 +55,12 @@ function init() {
 
     // Добавляем круг на карту.
     myMap.geoObjects.add(myCircle);
+	myMap.geoObjects.add(new ymaps.Placemark([55.684758, 37.738521], {
+            balloonContent: ''
+        }, {
+            preset: 'islands#blackStretchyIcon',
+            iconContent: 'Плещенницы 11 257'
+        }));
 }
 
 	</script>
