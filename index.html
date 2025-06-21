@@ -1,68 +1,118 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Bel Geo</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<ваш API-ключ>" type="text/javascript"></script>
-    
-	<style>
-        html, body, #map {
-            width: 100%; height: 100%; padding: 0; margin: 0;
-        }
+
+    <style>
+      html,
+      body,
+      #map {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
     </style>
-</head>
-<body>
-<div id="map"></div>
-	<script>
-		ymaps.ready(init);
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      ymaps.ready(init);
 
-function init() {
-    // Создаем карту.
-    var myMap = new ymaps.Map("map", {
-            center: [53.954220, 27.674080],
-            zoom: 8
-        }, {
-            searchControlProvider: 'yandex#search'
-        });
+      function init() {
+        // Создаем карту.
+        var myMap = new ymaps.Map(
+          "map",
+          {
+            center: [53.95422, 27.67408],
+            zoom: 8,
+          },
+          {
+            searchControlProvider: "yandex#search",
+          }
+        );
 
-    // Создаем круг.
-    var myCircle = new ymaps.Circle([
-        // Координаты центра круга.
-        [53.954220, 27.674080],
-        // Радиус круга в метрах.
-        17000
-    ], {
-        // Описываем свойства круга.
-        // Содержимое балуна.
-        balloonContent: "Радиус круга - 10 км",
-        // Содержимое хинта.
-        hintContent: "Подвинь меня"
-    }, {
-        // Задаем опции круга.
-        // Включаем возможность перетаскивания круга.
-        draggable: true,
-        // Цвет заливки.
-        // Последний байт (77) определяет прозрачность.
-        // Прозрачность заливки также можно задать используя опцию "fillOpacity".
-        fillColor: "#DB709377",
-        // Цвет обводки.
-        strokeColor: "#990066",
-        // Прозрачность обводки.
-        strokeOpacity: 0.8,
-        // Ширина обводки в пикселях.
-        strokeWidth: 2
-    });
+        // Создаем круг.
+        var myCircle = new ymaps.Circle(
+          [
+            // Координаты центра круга.
+            [53.95422, 27.67408],
+            // Радиус круга в метрах.
+            20000,
+          ],
+          {
+            // Описываем свойства круга.
+            // Содержимое балуна.
+            balloonContent: "",
+            // Содержимое хинта.
+            hintContent: "",
+          },
+          {
+            // Задаем опции круга.
+            // Включаем возможность перетаскивания круга.
+            draggable: false,
+            // Цвет заливки.
+            // Последний байт (77) определяет прозрачность.
+            // Прозрачность заливки также можно задать используя опцию "fillOpacity".
+            fillColor: "#00ff0070",
+            // Цвет обводки.
+            strokeColor: "#0f0",
+            // Прозрачность обводки.
+            strokeOpacity: 0.8,
+            // Ширина обводки в пикселях.
+            strokeWidth: 2,
+          }
+        );
 
-    // Добавляем круг на карту.
-    myMap.geoObjects.add(myCircle);
-	myMap.geoObjects.add(new ymaps.Placemark([54.423811, 27.833230], {
-            balloonContent: '',
-		iconCaption: 'Плещенницы 5 845'
-        }, {
-            preset: 'islands#blackStretchyIcon'
-        }));
-}
+        var myCircle2 = new ymaps.Circle(
+          [
+            // Координаты центра круга.
+            [53.95422, 27.67408],
+            // Радиус круга в метрах.
+            65000,
+          ],
+          {
+            // Описываем свойства круга.
+            // Содержимое балуна.
+            balloonContent: "",
+            // Содержимое хинта.
+            hintContent: "",
+          },
+          {
+            // Задаем опции круга.
+            // Включаем возможность перетаскивания круга.
+            draggable: false,
+            // Цвет заливки.
+            // Последний байт (77) определяет прозрачность.
+            // Прозрачность заливки также можно задать используя опцию "fillOpacity".
+            fillColor: "#00000000",
+            // Цвет обводки.
+            strokeColor: "#f00",
+            // Прозрачность обводки.
+            strokeOpacity: 0.8,
+            // Ширина обводки в пикселях.
+            strokeWidth: 2,
+          }
+        );
 
-	</script>
-</body>
+        // Добавляем круг на карту.
+        myMap.geoObjects.add(myCircle);
+        myMap.geoObjects.add(myCircle2);
+        myMap.geoObjects.add(
+          new ymaps.Placemark(
+            [54.423811, 27.83323],
+            {
+              balloonContent: "",
+              iconCaption: "Плещеницы 70км (5 845)",
+            },
+            {
+              preset: "islands",
+            }
+          )
+        );
+      }
+    </script>
+  </body>
 </html>
